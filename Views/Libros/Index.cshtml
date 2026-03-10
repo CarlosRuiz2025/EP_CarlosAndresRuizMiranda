@@ -1,0 +1,54 @@
+﻿@model IEnumerable<EP_CarlosAndresRuizMiranda.Models.Libro>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>📚 Listado de Libro</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">📙 Agregar Libro</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Publicacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdAutor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCategoria)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Publicacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Autor.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categoria.Nombre)
+                </td>
+                <td>
+                    @Html.ActionLink("📝Editar", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("🔍Detalles", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("🗑️Eliminar", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
